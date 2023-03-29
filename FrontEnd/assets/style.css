@@ -52,6 +52,7 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	background: #FFFEF8;
 }
 header {
 	display: flex;
@@ -59,7 +60,7 @@ header {
 	margin: 50px 0
 }
 section {
-	margin: 50px 0
+	margin: 100px 0
 }
 
 h1{
@@ -95,6 +96,11 @@ nav li {
 	font-size: 1.2em;
 }
 
+a {
+	text-decoration: none;
+	color: black;
+}
+
 li:hover {
 	color: #B1663C;
 }
@@ -121,10 +127,49 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
+.portfolio-title {
+	display: flex;
+	margin-bottom: 1em;
+	align-items: center;
+	justify-content: center;
+}
+
+
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
+	/* margin-bottom: 1em; */
 }
+
+.filter {
+	display: flex;
+	justify-content: center;
+	gap : 10px
+}
+
+button{
+	border: solid 1px #1D6154;
+	border-radius: 2em;
+	font-family: Syne;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 19px;
+	letter-spacing: 0em;
+	text-align: center;
+	margin-bottom: 2em;
+	color: #1D6154;
+	background: none;
+	padding: 0.5em 1em;
+	min-width: 100px;
+}
+
+button:hover , .btn_active {
+	color:white;
+	background-color: #1D6154;
+}
+
+
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -186,3 +231,154 @@ footer nav ul {
 	margin: 2em
 }
 
+
+
+#login {
+width: 40%;	
+margin: auto;
+min-height: 75vh;
+justify-content: center;
+display: flex;
+flex-direction: column;
+text-align: center;
+
+}
+
+#login h2{
+	margin-bottom: 20px;
+}
+
+#login form {
+	text-align: left;
+	margin-top:30px;
+	display: flex;
+	flex-direction: column;
+}
+
+#login input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#login label {
+	margin: 2em 0 1em 0;
+}
+
+
+.editor-bar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap : 20px;
+	color: white;
+	background-color: black;
+	height: 60px;
+
+
+}
+
+.editor-bar span {
+	color: black;
+	background-color: white;
+	margin-left: 50px;
+	padding: 10px;
+	border: solid;
+	border-radius: 2em;
+
+}
+
+.modify {
+	display: flex;
+	gap: 10px;
+	margin : 010px 40px;
+	cursor: pointer;
+
+}
+
+
+.modal {
+	visibility: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top:0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	width: 100vw;
+	height: 100vh;
+}
+
+.modal-wrapper {
+	text-align: center;
+	background-color: white;
+	width: 630px;
+	height: 730px;
+	border-radius: 10px;
+	
+
+}
+
+.close-btn {
+	text-align: right;
+	margin: 20px;
+	cursor: pointer;
+}
+
+.modal-wrapper h3 {
+	margin: 40px auto;
+	font-size: 26px ;
+	font-weight: 400;
+
+
+}
+
+.miniatures-gallery {
+	display:grid;
+	grid-gap: 10px;
+	padding: 0px 105px;
+	grid-template-columns: repeat(5 , 1fr);
+	margin-bottom: 60px;
+}
+
+.image {
+	display: grid;
+}
+
+.image img {
+	grid-column: 1/2;
+	grid-row: 1/2;
+	width: 100%;
+	height: 100px;	
+}
+
+.icons {
+	grid-column: 1/2;
+	grid-row: 1/2;
+	z-index: 1;
+	margin-left: auto;
+
+}
+
+.icons i {
+	color : white;
+	background-color: black;
+	padding: 5px;
+	font-size: 9px;
+	border-radius: 2px;
+	margin: 3px;
+}
+
+.fa-up-down-left-right {
+	opacity: 0;
+}
+
+.image:hover .fa-up-down-left-right {
+	opacity: 1;
+}
+
+
+.suppr {
+	color: red;
+}
