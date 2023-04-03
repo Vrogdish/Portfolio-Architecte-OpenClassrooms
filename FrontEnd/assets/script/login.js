@@ -1,3 +1,5 @@
+// import { getTokenFromApi } from "./api.js"
+
 import { getTokenFromApi } from "./api.js"
 
 const email = document.getElementById("email")
