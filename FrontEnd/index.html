@@ -12,9 +12,11 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="https://kit.fontawesome.com/6306c1b175.js" crossorigin="anonymous"></script>
+	<script type="module" src="assets/api.js" defer></script>
 	<script type="module" src="assets/works.js" defer></script>
 	<script type="module" src="assets/editor-mode.js" defer></script>
 	<script type="module" src="assets/modal.js" defer></script>
+	<script type="module" src="assets/modal-add.js" defer></script>
 
 </head>
 
@@ -30,13 +32,12 @@
 			</ul>
 		</nav>
 	</header>
-	<aside class="modal">
+	<aside class="modal modal-main">
 		<div class="modal-wrapper">
 			<div class="close-btn"><i class="fa-solid fa-xmark"></i></div>
 			<h3>Galerie photo</h3>
-			<div class="miniatures-gallery">
-
-			</div>
+			<div class="miniatures-gallery"></div>
+			<div class="separator"></div>
 			<button>Ajouter une photo</button>
 			<p class="suppr">Supprimer la galerie</p>
 		</div>
@@ -45,9 +46,29 @@
 		<div class="modal-wrapper modal-wrapper-add">
 			<div class="close-btn"><i class="fa-solid fa-xmark"></i></div>
 			<h3>Ajout photo</h3>
+			<form class="add-form" name="add-form" enctype="multipart/form-data" method="post">
+				<div class="add-file-zone"> 
+					<i class="fa-regular fa-image"></i>
+					<label for="add-file">+ Ajouter photo</label>
+					<p>jpg, png : 4mo max</p>
+					<input type="file" name="image" id="add-file" accept=".png, .jpeg, .jpg" required>
+				</div>
+				<div class="add-file-text">
+					<label for="file-title">Titre</label>
+					<input type="text" name="title" id="file-title" required>
 
+				</div>
+				
+				<div class="add-file-text">
+					<label for="file-categorie">Categorie</label>
+					<select name="category" id="file-categorie" required>
+						<option></option>
+					</select>
+					
+				</div>
+				<input type="submit" id="file-submit">
 
-
+			</form>
 		</div>
 
 	</aside>

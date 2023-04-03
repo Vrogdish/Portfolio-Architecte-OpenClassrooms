@@ -298,8 +298,8 @@ text-align: center;
 
 
 .modal {
-	visibility: hidden;
-	display: flex;
+	
+	display: none;
 	align-items: center;
 	justify-content: center;
 	position: fixed;
@@ -308,6 +308,7 @@ text-align: center;
 	background-color: rgba(0, 0, 0, 0.6);
 	width: 100vw;
 	height: 100vh;
+
 }
 
 .modal-wrapper {
@@ -368,6 +369,7 @@ text-align: center;
 	font-size: 9px;
 	border-radius: 2px;
 	margin: 3px;
+	cursor: pointer;
 }
 
 .fa-up-down-left-right {
@@ -381,4 +383,87 @@ text-align: center;
 
 .suppr {
 	color: red;
+}
+
+.separator {
+	
+	border-bottom: solid 1px #b3b3b3;
+	margin: 30px 105px;
+}
+
+.modal-wrapper button {
+	color: white;
+	background-color: #1D6154;
+	cursor: pointer;
+
+}
+
+
+
+
+.add-form {
+	display: flex;
+	flex-direction: column;
+	padding: 0 105px;
+	gap: 30px;
+}
+
+
+.add-file-text {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
+
+.add-file-zone {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 169px;
+	background-color: #E8F1F6;
+}
+
+.add-file-zone i {
+	font-size: 46px;
+	margin-top: 28px;
+	margin-bottom: 30px;
+}
+
+.add-file-zone img {
+	height: 100px;
+	margin: 5px;
+
+}
+
+.add-form input[type=file] {
+	display: none;
+}
+
+label[for=add-file] {
+	background-color: #CBD6DC;
+	border-radius: 2em;
+	padding: 10px 33px;
+	cursor: pointer;
+
+}
+
+.add-form input[type=text] {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	margin-top: 10px;
+}
+
+.add-form select {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	margin-top: 10px;
+}
+
+.add-form input[type=submit] {
+	padding-top: 10px;
+	padding-bottom: 10px;
 }

@@ -1,9 +1,5 @@
-/** Récupération des données de l'API */
-const reponseForWorks = await fetch("http://localhost:5678/api/works");
-export const works = await reponseForWorks.json();
-
-const reponseForCategories = await fetch("http://localhost:5678/api/categories");
-const categories = await reponseForCategories.json();
+import { works } from "./api.js";
+import { categories} from "./api.js"
 
 
 /** Récuperation des emplacements html  */
@@ -53,6 +49,7 @@ const generateFilter = (elements) => {
 
 generateFilter(categories);
 generateGallery(works);
+
 
 
 

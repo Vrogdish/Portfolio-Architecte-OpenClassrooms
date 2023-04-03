@@ -5,7 +5,7 @@ const logout = document.getElementById("logger");
 const filter = document.querySelector(".filter");
 const portfolioTitle = document.querySelector(".portfolio-title");
 const intro = document.querySelector("#introduction figure")
-const modal = document.querySelector(".modal")
+
 
 /*** Fonction pour generer le mode edition */
 const editorMode = () => {
@@ -30,12 +30,7 @@ if (localStorage) {
         sessionStorage.clear()
     })
 
-    document.querySelectorAll(".modify").forEach(element => {
-        element.addEventListener("click",() => {
-        modal.style.visibility="visible"
- 
-    })
-    })
+
 }
 
 
