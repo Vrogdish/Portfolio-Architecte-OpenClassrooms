@@ -427,12 +427,20 @@ text-align: center;
 	font-size: 46px;
 	margin-top: 28px;
 	margin-bottom: 30px;
+	color: #B9C5CC;
 }
 
 .add-file-zone img {
 	height: 100px;
 	margin: 5px;
 
+}
+
+.add-file-zone label {
+	color : #306685;
+	font-weight: 500;
+	font-size: 14px;
+	margin: 5px;
 }
 
 .add-form input[type=file] {
@@ -464,6 +472,13 @@ label[for=add-file] {
 }
 
 .add-form input[type=submit] {
-	padding-top: 10px;
-	padding-bottom: 10px;
+	/* padding-top: 10px;
+	padding-bottom: 10px; */
+	padding: 10px 49px;
+	margin: 0 auto;
+	border: none;
+}
+
+.add-form .separator {
+	margin: 0;
 }

@@ -50,6 +50,7 @@ fileInput.addEventListener("change", (e) => {
     const imageUrl = URL.createObjectURL(file)
 
     displayImage(imageUrl);
+    console.log(file)
 
 })
 
@@ -68,6 +69,11 @@ form.addEventListener("submit", async (e) => {
 
     if (!imageTitle | !imageCategorie | !imageElement) {
         alert("Veuillez remplir tous les champs")
+        return
+    }
+
+    if (file.size > 4194304) {
+        alert("Fichier trop volumineux")
         return
     }
 

@@ -89,7 +89,7 @@ const trash = document.querySelectorAll(".miniatures-gallery .fa-trash-can")
 
 for (let i=0; i<trash.length; i++){
    
-    trash[i].addEventListener("click", () => {
+    trash[i].addEventListener("click", async () => {
         const confirmDelete = confirm("Etes vous sûr de vouloir supprimer cette photo ?")
         if (!confirmDelete){
             return
@@ -97,7 +97,7 @@ for (let i=0; i<trash.length; i++){
         const userOnline = JSON.parse(sessionStorage.getItem("userOnline"))
         console.log(works[i])
         console.log(userOnline.token)
-        deleteToApi(works[i].id, userOnline)
+        await deleteToApi(works[i].id, userOnline)
 
     })
 
