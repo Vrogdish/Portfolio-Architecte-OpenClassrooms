@@ -4,7 +4,6 @@ const fileZone = document.querySelector(".add-file-zone")
 const fileInput = document.getElementById("add-file")
 const titleInput = document.getElementById("file-title")
 const categorieInput = document.getElementById("file-categorie");
-// const fileSubmit = document.getElementById("file-submit")
 const form = document.forms.namedItem("add-form")
 
 let previewIspresent = false

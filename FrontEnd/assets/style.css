@@ -59,6 +59,11 @@ header {
 	justify-content: space-between;
 	margin: 50px 0
 }
+
+main {
+	padding: 0 100px;
+}
+
 section {
 	margin: 100px 0
 }
@@ -107,6 +112,7 @@ li:hover {
 #introduction {
 	display: flex;
 	align-items: center;
+	gap: 70px;
 }
 #introduction figure {
 	flex: 1
@@ -114,7 +120,7 @@ li:hover {
 #introduction img {
 	display: block;
 	margin: auto;
-	width: 80%;
+	width: 100%;
 }
 
 #introduction article {
@@ -138,13 +144,14 @@ li:hover {
 
 #portfolio h2 {
 	text-align: center;
-	/* margin-bottom: 1em; */
+	margin: 0 20px;
 }
 
 .filter {
 	display: flex;
 	justify-content: center;
-	gap : 10px
+	gap : 10px;
+	margin: 2em 0;
 }
 
 button{
@@ -291,7 +298,7 @@ text-align: center;
 .modify {
 	display: flex;
 	gap: 10px;
-	margin : 010px 40px;
+	margin : 10px 0px;
 	cursor: pointer;
 
 }
