@@ -48,7 +48,7 @@ export const postToApi = async (files, userOnline) => {
       },
       body: files,
     });
-    console.log(reponse);
+
     return reponse;
   } catch (error) {
     console.error(error);

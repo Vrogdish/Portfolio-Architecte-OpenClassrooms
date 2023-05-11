@@ -7,7 +7,7 @@ const miniGallery = document.querySelector(".miniatures-gallery");
 const addBtn = document.querySelector(".modal-wrapper button");
 
 let modalIsOpen = "false";
-
+let trash = "";
 /** Ouverture de la modale */
 
 if (localStorage) {
@@ -41,11 +41,16 @@ const addMiniature = (element) => {
 };
 
 /** Affichage de la gallery */
+export const generateMiniGallery = (elements) => {
+  miniGallery.innerHTML = "";
+  for (let i in elements) {
+    addMiniature(elements[i]);
+  }    trash = document.querySelectorAll(".miniatures-gallery .fa-trash-can");
 
-for (let i in works) {
-  addMiniature(works[i]);
-}
+};
 
+generateMiniGallery(works);
+// generateMiniGallery(works)
 /** fermeture des modales */
 
 Array.from(closeModal).forEach((element) => {
@@ -86,10 +91,31 @@ modalAdd.addEventListener("click", (e) => {
 });
 
 /** Suppression des images */
-const trash = document.querySelectorAll(".miniatures-gallery .fa-trash-can");
+// const trash = document.querySelectorAll(".miniatures-gallery .fa-trash-can");
 
-for (let i = 0; i < trash.length; i++) {
-  trash[i].addEventListener("click", async () => {
+// for (let i = 0; i < trash.length; i++) {
+//   trash[i].addEventListener("click", async () => {
+
+//     const confirmDelete = confirm(
+//       "Etes vous sûr de vouloir supprimer cette photo ?"
+//     );
+//     if (!confirmDelete) {
+//       return;
+//     }
+//     const userOnline = JSON.parse(sessionStorage.getItem("userOnline"));
+
+//     await deleteToApi(works[i].id, userOnline);
+//     const newWorks = await getWorksFromApi();
+//     generateMiniGallery(newWorks);
+
+//     generateGallery(newWorks);
+
+// console.log(trash)
+//   });
+// }
+
+export const trashListener = (element, index) => {
+  element.addEventListener("click", async () => {
     const confirmDelete = confirm(
       "Etes vous sûr de vouloir supprimer cette photo ?"
     );
@@ -98,11 +124,17 @@ for (let i = 0; i < trash.length; i++) {
     }
     const userOnline = JSON.parse(sessionStorage.getItem("userOnline"));
 
-    await deleteToApi(works[i].id, userOnline)
-    const newWorks= await getWorksFromApi()
-    miniGallery.innerHTML=""
-    for (let i in newWorks) {
-      addMiniature(newWorks[i])};
-    generateGallery(newWorks)
-  })
+    await deleteToApi(works[index].id, userOnline);
+    const newWorks = await getWorksFromApi();
+
+    generateMiniGallery(newWorks);
+    generateGallery(newWorks);
+    for (let i = 0; i < trash.length; i++) {
+      trashListener(trash[i], i);
+    }
+  });
+};
+
+for (let i = 0; i < trash.length; i++) {
+  trashListener(trash[i], i);
 }
