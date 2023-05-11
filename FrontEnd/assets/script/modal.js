@@ -5,9 +5,9 @@ const modalMain = document.querySelector(".modal-main");
 const modalAdd = document.querySelector(".modal-add");
 const miniGallery = document.querySelector(".miniatures-gallery");
 const addBtn = document.querySelector(".modal-wrapper button");
-
+export let trash =document.querySelectorAll(".miniatures-gallery .fa-trash-can")
 let modalIsOpen = "false";
-let trash = "";
+
 /** Ouverture de la modale */
 
 if (localStorage) {
@@ -20,7 +20,7 @@ if (localStorage) {
   });
 }
 
-/** creation des vignettes */
+/**  fonction creation des vignettes */
 
 const addMiniature = (element) => {
   const miniatures = document.createElement("div");
@@ -40,17 +40,45 @@ const addMiniature = (element) => {
   miniGallery.append(miniatures);
 };
 
-/** Affichage de la gallery */
+/** fonction affichage de la gallery */
 export const generateMiniGallery = (elements) => {
   miniGallery.innerHTML = "";
   for (let i in elements) {
     addMiniature(elements[i]);
-  }    trash = document.querySelectorAll(".miniatures-gallery .fa-trash-can");
-
+  }
+  trash = document.querySelectorAll(".miniatures-gallery .fa-trash-can")
+  for (let i = 0; i < trash.length; i++) {
+    trashListener(trash[i], i);
+  }
 };
 
-generateMiniGallery(works);
-// generateMiniGallery(works)
+// Fonction Suppression de photos
+
+export const trashListener = (element, index) => {
+  element.addEventListener("click", async () => {
+    const confirmDelete = confirm(
+      "Etes vous sûr de vouloir supprimer cette photo ?"
+    );
+    if (!confirmDelete) {
+      return;
+    }
+    const userOnline = JSON.parse(sessionStorage.getItem("userOnline"));
+    let newWorks = await getWorksFromApi();
+    await deleteToApi(newWorks[index].id, userOnline);
+    newWorks = await getWorksFromApi();
+
+    generateGallery(newWorks);
+    generateMiniGallery(newWorks);
+   
+
+    // for (let i = 0; i < trash.length; i++) {
+    //   trashListener(trash[i], i);
+    // }
+  });
+};
+
+
+
 /** fermeture des modales */
 
 Array.from(closeModal).forEach((element) => {
@@ -90,51 +118,12 @@ modalAdd.addEventListener("click", (e) => {
   }
 });
 
-/** Suppression des images */
-// const trash = document.querySelectorAll(".miniatures-gallery .fa-trash-can");
+
+
+
+
+generateMiniGallery(works);
 
 // for (let i = 0; i < trash.length; i++) {
-//   trash[i].addEventListener("click", async () => {
-
-//     const confirmDelete = confirm(
-//       "Etes vous sûr de vouloir supprimer cette photo ?"
-//     );
-//     if (!confirmDelete) {
-//       return;
-//     }
-//     const userOnline = JSON.parse(sessionStorage.getItem("userOnline"));
-
-//     await deleteToApi(works[i].id, userOnline);
-//     const newWorks = await getWorksFromApi();
-//     generateMiniGallery(newWorks);
-
-//     generateGallery(newWorks);
-
-// console.log(trash)
-//   });
+//   trashListener(trash[i], i);
 // }
-
-export const trashListener = (element, index) => {
-  element.addEventListener("click", async () => {
-    const confirmDelete = confirm(
-      "Etes vous sûr de vouloir supprimer cette photo ?"
-    );
-    if (!confirmDelete) {
-      return;
-    }
-    const userOnline = JSON.parse(sessionStorage.getItem("userOnline"));
-
-    await deleteToApi(works[index].id, userOnline);
-    const newWorks = await getWorksFromApi();
-
-    generateMiniGallery(newWorks);
-    generateGallery(newWorks);
-    for (let i = 0; i < trash.length; i++) {
-      trashListener(trash[i], i);
-    }
-  });
-};
-
-for (let i = 0; i < trash.length; i++) {
-  trashListener(trash[i], i);
-}

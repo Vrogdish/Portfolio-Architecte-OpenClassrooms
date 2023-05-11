@@ -1,6 +1,6 @@
 import { postToApi, categories, getWorksFromApi } from "./api.js";
 import { generateGallery } from "./index.js";
-import { generateMiniGallery, trashListener } from "./modal.js";
+import { generateMiniGallery, trash, trashListener } from "./modal.js";
 
 const fileZone = document.querySelector(".add-file-zone");
 const fileInput = document.getElementById("add-file");
@@ -82,18 +82,26 @@ form.addEventListener("submit", async (e) => {
     const formData = new FormData(form);
 
     await postToApi(formData, userOnline);
-    const newWorks = await getWorksFromApi();
+
+    
  
     alert("Votre photo à bien été ajoutée");
     form.reset();
+   
+    imageElement = "";
+    imageTitle = "";
+    imageCategorie = "";
+   
     displayImage("");
 
-    generateMiniGallery(newWorks);
+    const newWorks = await getWorksFromApi();
+    
     generateGallery(newWorks);
-  const trash = document.querySelectorAll(".miniatures-gallery .fa-trash-can")
-    for (let i = 0; i < trash.length; i++) {
-      trashListener(trash[i], i);
-    }
+    generateMiniGallery(newWorks);
+    console.log(newWorks)
+    // for (let i = 0; i < trash.length; i++) {
+    //   trashListener(trash[i], i);
+    // }
  
   }
 });
