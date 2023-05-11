@@ -8,7 +8,7 @@ const filter = document.querySelector(".filter");
 
 
 /** Creation de la fonction generant la gallerie a afficher */
-const generateGallery = (elements) =>  {
+export const generateGallery = (elements) =>  {
     document.querySelector(".gallery").innerHTML = "";
     for (let i in elements) {
 

@@ -1,4 +1,5 @@
-import { deleteToApi, works } from "./api.js";
+import { deleteToApi, getWorksFromApi, works } from "./api.js";
+import { generateGallery } from "./index.js";
 const closeModal = document.querySelectorAll(".close-btn");
 const modalMain = document.querySelector(".modal-main");
 const modalAdd = document.querySelector(".modal-add");
@@ -79,10 +80,8 @@ modalMain.addEventListener("click", (e) => {
 
 modalAdd.addEventListener("click", (e) => {
   if (modalIsOpen && e.target === modalAdd) {
-
-    modalAdd.setAttribute("style","display : none")
+    modalAdd.setAttribute("style", "display : none");
     modalIsOpen = false;
-
   }
 });
 
@@ -99,6 +98,11 @@ for (let i = 0; i < trash.length; i++) {
     }
     const userOnline = JSON.parse(sessionStorage.getItem("userOnline"));
 
-    await deleteToApi(works[i].id, userOnline);
-  });
+    await deleteToApi(works[i].id, userOnline)
+    const newWorks= await getWorksFromApi()
+    miniGallery.innerHTML=""
+    for (let i in newWorks) {
+      addMiniature(newWorks[i])};
+    generateGallery(newWorks)
+  })
 }

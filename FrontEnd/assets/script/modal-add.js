@@ -1,4 +1,5 @@
-import { postToApi, categories } from "./api.js";
+import { postToApi, categories, getWorksFromApi } from "./api.js";
+import { generateGallery } from "./index.js";
 
 const fileZone = document.querySelector(".add-file-zone")
 const fileInput = document.getElementById("add-file")
@@ -21,6 +22,7 @@ for (let i in categories) {
 }
 
 
+// Previsualisation de l'image
 
 const displayImage = (url) => {
     
@@ -36,6 +38,9 @@ const displayImage = (url) => {
     previewIspresent = true
 }
 
+
+
+// Récupération des champs 
 
 fileInput.addEventListener("change", (e) => {
 
@@ -63,6 +68,8 @@ categorieInput.addEventListener("input", (e) => {
 })
 
 
+// ajout de travaux
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault()
 
@@ -79,7 +86,13 @@ form.addEventListener("submit", async (e) => {
     const userOnline = JSON.parse(sessionStorage.getItem("userOnline"))
     const formData = new FormData (form)
 
-     await postToApi(formData, userOnline)
+    await postToApi(formData, userOnline)
+    const newWorks = await getWorksFromApi()
+    generateGallery(newWorks)
+    document.querySelector(".modal-add").style.display="none"
+
+
+
 
 })
 
